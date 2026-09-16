@@ -63,17 +63,17 @@ public class Physics : MonoBehaviour
         if (x != 0)
         {
             moveBy = x * speed;
-            playerRigidBody.velocity = new Vector2(moveBy, playerRigidBody.velocity.y);
+            playerRigidBody.linearVelocity = new Vector2(moveBy, playerRigidBody.linearVelocity.y);
         }
         else if (collider != null)
         {
-            moveBy = playerRigidBody.velocity.x * 0.97f;
-            playerRigidBody.velocity = new Vector2(moveBy, playerRigidBody.velocity.y);
+            moveBy = playerRigidBody.linearVelocity.x * 0.97f;
+            playerRigidBody.linearVelocity = new Vector2(moveBy, playerRigidBody.linearVelocity.y);
         }
         else
         {
-            moveBy = playerRigidBody.velocity.x;
-            playerRigidBody.velocity = new Vector2(moveBy, playerRigidBody.velocity.y);
+            moveBy = playerRigidBody.linearVelocity.x;
+            playerRigidBody.linearVelocity = new Vector2(moveBy, playerRigidBody.linearVelocity.y);
         }
     }
 
@@ -81,20 +81,20 @@ public class Physics : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W) && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor || additionalJumps > 0))
         {
-            playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, jumpForce);
+            playerRigidBody.linearVelocity = new Vector2(playerRigidBody.linearVelocity.x, jumpForce);
             additionalJumps--;
         }
     }
 
     void BetterJump()
     {
-        if (playerRigidBody.velocity.y < 0)
+        if (playerRigidBody.linearVelocity.y < 0)
         {
-            playerRigidBody.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
+            playerRigidBody.linearVelocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if (playerRigidBody.velocity.y > 0 && !Input.GetKey(KeyCode.W))
+        else if (playerRigidBody.linearVelocity.y > 0 && !Input.GetKey(KeyCode.W))
         {
-            playerRigidBody.velocity += Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
+            playerRigidBody.linearVelocity += Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
     
