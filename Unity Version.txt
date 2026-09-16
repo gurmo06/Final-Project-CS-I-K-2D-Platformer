@@ -1,0 +1,2 @@
+The original Unity Editor was 2020.3.6f1.
+Please use 2020.3.6f1 if any problems arise.
