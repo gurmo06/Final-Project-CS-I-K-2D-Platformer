@@ -8,6 +8,7 @@
 UserSettings/
 
 .vs/
+.vscode/
 .gradle/
 
 *.csproj
