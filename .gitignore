@@ -23,3 +23,5 @@ UserSettings/
 *.mdb
 *.opendb
 *.VC.db
+
+.vsconfig
